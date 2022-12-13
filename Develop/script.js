@@ -22,11 +22,15 @@ function writePassword() {
   // if pass length is less than 8 and greater than 128 alert them to enter valid number
   // otherwise return 
   if (passLength < 8 || passLength > 128) {
-    alert ("Please choose a character length of at least 8 characters and no more than 128 characters."); 
+    alert ("Please choose a character length of at least 8 characters and no more than 128 characters.");
     return;
   }
-
-
+  // if you didnt unclude a lowercase, uppercase, numeric, or special characters, alert them and return
+  if (!incLowercase && !incUppercase && !incNumeric && !incSpecial) {
+    alert ("Must choose at least one character type."); 
+    return;
+  }
+  
   var password = generatePassword () ;
   
   
