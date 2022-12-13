@@ -30,14 +30,22 @@ function writePassword() {
     alert ("Must choose at least one character type."); 
     return;
   }
-  
-  var password = generatePassword () ;
-  
-  
-  
-  
-  
-  
+  // this generates a random password with a length given at passlength with specific characters included. 
+  // password is set to empty string and then a array Characterinc
+  var password = "" ;
+  var Characterinc = [];
+  if (incLowercase) Characterinc.push("abcdefghijklmnopqrstuvwxyz");
+  if (incUppercase) Characterinc.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  if (incNumeric) Characterinc.push("0123456789");
+  if (incSpecial) Characterinc.push("!@#$%^&*()-_=+[]{}|;:'<>,.?/~`");
+// used the passlength to create a for loop that adds a random character each time it goes through  a loop
+// up until the password length is equal to i which adds on to its value everytime it goes through the loop
+  for (var i = 0; i < passLength; i++) {
+    var character = Characterinc[Math.floor(Math.random() * Characterinc.length)];
+    var character = character[Math.floor(Math.random() * character.length)];
+    password += character;
+  }
+
  // this will replace both the alert password text and password id in html 
  // to the generated password 
   var passwordText = document.querySelector("#password");
